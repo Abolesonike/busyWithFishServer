@@ -11,6 +11,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.CharsetUtil;
 
 public class NettyServer {
     public static void main(String[] args) throws Exception {
@@ -36,6 +39,9 @@ public class NettyServer {
                             // 添加帧解码器来处理粘包问题
                             socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
                                     Unpooled.copiedBuffer("\n".getBytes())));
+                            // 添加字符串编解码器
+//                            socketChannel.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
+//                            socketChannel.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
                             // 添加自定义处理器
                             socketChannel.pipeline().addLast(new NettyServerHandler());
                         }

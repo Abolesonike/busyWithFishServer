@@ -3,69 +3,69 @@ package handler;
 import com.alibaba.fastjson2.JSONObject;
 import dto.Packet;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
+import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.bufferUtils;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 public class NettyServerHandler extends ChannelHandlerAdapter {
     Logger logger = LoggerFactory.getLogger(NettyServerHandler.class);
 
-    // 在线的客户端
-    private final ConcurrentHashMap<String, Channel> online = new ConcurrentHashMap<>();
-
-    // 相互绑定的两个客户端
-    private final ConcurrentHashMap<String, String> bindMap = new ConcurrentHashMap<>();
+    // 使用共享状态处理器
+    private final SharedStateHandler sharedState = SharedStateHandler.getInstance();
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        // 消息处理
-        ByteBuf byteBuf = (ByteBuf) msg;
-        String message = byteBuf.toString(CharsetUtil.UTF_8);
-
-        Packet packet;
         try {
-            packet = JSONObject.parseObject(message, Packet.class);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        String cmd = packet.getCmd();
+            // 消息处理
+            ByteBuf byteBuf = (ByteBuf) msg;
+            String message = byteBuf.toString(CharsetUtil.UTF_8);
 
-        switch (cmd) {
-            case "bind": // 绑定
-                bindMap.put(packet.getFrom(), packet.getTo());
-                break;
-            case "unbind": // 解绑
-                bindMap.remove(packet.getFrom());
-                break;
-            case "send": // 发送
-                // 目标服务端通道
-                Channel toChannel = online.get(bindMap.get(packet.getFrom()));
-                toChannel.writeAndFlush(packet);
-                break;
-            case "heartBeat": // 心跳检测
-                if (!online.containsKey(packet.getFrom())) {
-                    // 初次心跳
-                    online.put(packet.getFrom(), ctx.channel());
-                }
-                logger.info("服务端已检测到心跳: {}", message);
-                // 通知客户端，服务端已检测到心跳
-                ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(
-                        new Packet("heartBeat", packet.getSeq() + 1, "server has received this heart beat")));
-                break;
+            Packet packet;
+            try {
+                packet = JSONObject.parseObject(message, Packet.class);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            String cmd = packet.getCmd();
+
+            switch (cmd) {
+                case "bind": // 绑定
+                    sharedState.bind(packet.getFrom(), packet.getTo());
+                    break;
+                case "unbind": // 解绑
+                    sharedState.unbind(packet.getFrom());
+                    break;
+                case "send": // 发送
+                    // 目标服务端通道
+                    Channel toChannel = sharedState.getChannel(sharedState.getBindTarget(packet.getFrom()));
+                    toChannel.writeAndFlush(bufferUtils.copyObjectToBuffer(packet));
+                    break;
+                case "heartBeat": // 心跳检测
+                    if (!sharedState.isOnline(packet.getFrom())) {
+                        // 初次心跳
+                        sharedState.addToOnline(packet.getFrom(), ctx.channel());
+                    }
+                    logger.info("服务端已检测到心跳: {}", message);
+                    // 通知客户端，服务端已检测到心跳
+                    ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(
+                            new Packet("heartBeat", packet.getSeq() + 1, "server has received this heart beat")));
+                    break;
+            }
+        } finally {
+            // 确保释放ByteBuf资源
+            ReferenceCountUtil.release(msg);
         }
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx){
-        // 清理 online + bindMap
-        online.entrySet().removeIf(e->e.getValue()==ctx.channel());
+        // 清理 sharedState
+        sharedState.removeChannel(ctx.channel());
     }
 
     @Override
