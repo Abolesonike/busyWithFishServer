@@ -9,6 +9,7 @@ public class bufferUtils {
 
     public static ByteBuf copyObjectToBuffer(Object object) {
         String jsonString = JSONObject.toJSONString(object);
-        return Unpooled.copiedBuffer(jsonString, CharsetUtil.UTF_8);
+        // 添加换行符以符合帧分隔符的要求
+        return Unpooled.copiedBuffer(jsonString + "\n", CharsetUtil.UTF_8);
     }
 }
