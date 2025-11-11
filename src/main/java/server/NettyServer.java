@@ -2,6 +2,7 @@ package server;
 
 import handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -9,6 +10,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 
 public class NettyServer {
     public static void main(String[] args) throws Exception {
@@ -31,7 +33,10 @@ public class NettyServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            //给pipeline管道设置处理器
+                            // 添加帧解码器来处理粘包问题
+                            socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024,
+                                    Unpooled.copiedBuffer("\n".getBytes())));
+                            // 添加自定义处理器
                             socketChannel.pipeline().addLast(new NettyServerHandler());
                         }
                     });//给workerGroup的EventLoop对应的管道设置处理器
