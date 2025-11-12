@@ -31,29 +31,37 @@ public class NettyServerHandler extends ChannelHandlerAdapter {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            String cmd = packet.getCmd();
+            int cmd = packet.getCmd();
 
             switch (cmd) {
-                case "bind": // 绑定
+                case 0x10: // 绑定
                     sharedState.bind(packet.getFrom(), packet.getTo());
                     break;
-                case "unbind": // 解绑
+                case 0x20: // 解绑
                     sharedState.unbind(packet.getFrom());
                     break;
-                case "send": // 发送
+                case 0x30: // 发送
                     // 目标服务端通道
                     Channel toChannel = sharedState.getChannel(sharedState.getBindTarget(packet.getFrom()));
                     toChannel.writeAndFlush(bufferUtils.copyObjectToBuffer(packet));
                     break;
-                case "heartBeat": // 心跳检测
+                case 0x40: // 心跳检测
                     if (!sharedState.isOnline(packet.getFrom())) {
                         // 初次心跳
                         sharedState.addToOnline(packet.getFrom(), ctx.channel());
                     }
                     logger.info("服务端已检测到心跳: {}", message);
-                    // 通知客户端，服务端已检测到心跳
-                    ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(
-                            new Packet("heartBeat", packet.getSeq() + 1, "server has received this heart beat")));
+                    // 检查绑定关系
+                    if (sharedState.getBindTarget(packet.getFrom()) == null) {
+                        // 未绑定
+                        ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(new Packet(0x40, "unbind")));
+                    } else if(sharedState.getChannel(sharedState.getBindTarget(packet.getFrom())) == null) {
+                        // 目标通道不在线
+                        ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(new Packet(0x40, "bind offline")));
+                    } else {
+                        // 目标通道在线
+                        ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(new Packet(0x40, "bind online")));
+                    }
                     break;
             }
         } finally {
