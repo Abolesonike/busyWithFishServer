@@ -1,10 +1,9 @@
 package handler;
 
-import dto.Packet;
 import io.netty.channel.Channel;
 import lombok.Data;
-import lombok.Getter;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -57,7 +56,16 @@ public class SharedStateHandler {
     }
 
     public void removeChannel(Channel channel) {
-        // 清理 online + bindMap
-        online.entrySet().removeIf(entry -> entry.getValue() == channel);
+        // 找到对应的客户端ID
+        String clientId = online.entrySet().stream()
+                .filter(entry -> entry.getValue() == channel)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+
+        if (clientId != null) {
+            online.remove(clientId);
+            bindMap.remove(clientId);
+        }
     }
 }

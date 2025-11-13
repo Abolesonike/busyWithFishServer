@@ -63,6 +63,8 @@ public class NettyServerHandler extends ChannelHandlerAdapter {
                         ctx.writeAndFlush(bufferUtils.copyObjectToBuffer(new Packet(0x40, "bind online")));
                     }
                     break;
+                case 0x50: // 客户端请求离线
+                    sharedState.removeChannel(ctx.channel());
             }
         } finally {
             // 确保释放ByteBuf资源
