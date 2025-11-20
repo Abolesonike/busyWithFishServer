@@ -1,4 +1,4 @@
-package org.fizzy.dataserver;
+package org.fizzy.busywithfish.dataserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package org.fizzy.dataserver;
+package org.fizzy.busywithfish.dataserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

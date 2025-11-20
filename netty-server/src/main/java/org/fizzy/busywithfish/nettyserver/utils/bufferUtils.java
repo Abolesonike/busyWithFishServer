@@ -1,4 +1,4 @@
-package utils;
+package org.fizzy.busywithfish.nettyserver.utils;
 
 import com.alibaba.fastjson2.JSONObject;
 import io.netty.buffer.ByteBuf;

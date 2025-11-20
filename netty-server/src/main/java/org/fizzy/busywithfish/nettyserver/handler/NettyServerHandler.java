@@ -1,7 +1,7 @@
-package handler;
+package org.fizzy.busywithfish.nettyserver.handler;
 
 import com.alibaba.fastjson2.JSONObject;
-import dto.Packet;
+import org.fizzy.busywithfish.nettyserver.dto.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -10,7 +10,7 @@ import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.bufferUtils;
+import org.fizzy.busywithfish.nettyserver.utils.bufferUtils;
 
 public class NettyServerHandler extends ChannelHandlerAdapter {
     Logger logger = LoggerFactory.getLogger(NettyServerHandler.class);

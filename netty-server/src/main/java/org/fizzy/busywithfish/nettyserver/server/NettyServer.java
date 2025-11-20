@@ -1,6 +1,6 @@
-package server;
+package org.fizzy.busywithfish.nettyserver.server;
 
-import handler.NettyServerHandler;
+import org.fizzy.busywithfish.nettyserver.handler.NettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
@@ -11,9 +11,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
-import io.netty.util.CharsetUtil;
 
 public class NettyServer {
     public static void main(String[] args) throws Exception {

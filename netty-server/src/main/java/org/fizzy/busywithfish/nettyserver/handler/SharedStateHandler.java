@@ -1,4 +1,4 @@
-package handler;
+package org.fizzy.busywithfish.nettyserver.handler;
 
 import io.netty.channel.Channel;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package dto;
+package org.fizzy.busywithfish.nettyserver.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
