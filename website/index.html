@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐟 Busy With Fish - 上班摸鱼神器</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>🐟 Busy With Fish</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#features">功能</a></li>
+                <li><a href="#gallery">图集</a></li>
+                <li><a href="#download">下载</a></li>
+                <li><a href="#donate">捐赠</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>上班摸鱼神器</h1>
+            <p>让你在工作时悄悄积累功德，享受片刻放松！</p>
+            <a href="#download" class="cta-button">立即下载</a>
+        </div>
+    </section>
+
+    <!-- 功能介绍 -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>🌟 特色功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🙏</div>
+                    <h3>积累功德系统</h3>
+                    <p>敲击任意按键，木鱼就会发出清脆的声音，同时功德值 +1。实时显示功德值，敲击后有特效提示，离线也能攒功德。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💫</div>
+                    <h3>多种角色皮肤</h3>
+                    <p>经典木鱼模式、可爱的Pop Cat模式，以及即将推出的铁山靠模式，带来不同的摸鱼体验。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>数据统计功能</h3>
+                    <p>本地数据存储，自动记录每天的敲击次数和功德值，隐私安全保护，还可显示键盘热点可视化。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h3>联机互动功能</h3>
+                    <p>与好友一起摸鱼修仙，通过UID匹配连接到其他用户，实时同步敲击效果，云端服务连接全球摸鱼伙伴。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h3>便捷操作</h3>
+                    <p>拖拽移动、边缘吸附、系统托盘最小化，全局热键随时随地敲击功德，操作简单便捷。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>隐私安全</h3>
+                    <p>所有数据完全离线存储在本地，不会上传至任何服务器，保护您的隐私安全。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 图集展示 -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>📸 界面预览</h2>
+            <div class="carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide active" style="display: block;">
+                        <svg width="100%" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="800" height="400" fill="#4A90E2" />
+                            <rect x="50" y="50" width="700" height="300" fill="#f0f0f0" rx="10" />
+                            <rect x="50" y="50" width="700" height="30" fill="#333" rx="5" />
+                            <circle cx="400" cy="200" r="60" fill="#50C878" />
+                            <rect x="300" y="300" width="200" height="30" fill="#66aaff" rx="5" />
+                            <text x="400" y="210" text-anchor="middle" fill="white" font-size="20" font-family="Arial">木鱼模式</text>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="800" height="400" fill="#50C878" />
+                            <rect x="50" y="50" width="700" height="300" fill="#f0f0f0" rx="10" />
+                            <rect x="50" y="50" width="700" height="30" fill="#333" rx="5" />
+                            <circle cx="400" cy="200" r="60" fill="#FF6B6B" />
+                            <rect x="300" y="300" width="200" height="30" fill="#66aaff" rx="5" />
+                            <text x="400" y="210" text-anchor="middle" fill="white" font-size="20" font-family="Arial">Pop Cat模式</text>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="800" height="400" fill="#FF6B6B" />
+                            <rect x="50" y="50" width="700" height="300" fill="#f0f0f0" rx="10" />
+                            <rect x="50" y="50" width="700" height="30" fill="#333" rx="5" />
+                            <circle cx="400" cy="200" r="60" fill="#FFD93D" />
+                            <rect x="300" y="300" width="200" height="30" fill="#66aaff" rx="5" />
+                            <text x="400" y="210" text-anchor="middle" fill="white" font-size="20" font-family="Arial">系统托盘</text>
+                        </svg>
+                    </div>
+                    <div class="carousel-slide">
+                        <svg width="100%" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="800" height="400" fill="#FFD93D" />
+                            <rect x="50" y="50" width="700" height="300" fill="#f0f0f0" rx="10" />
+                            <rect x="50" y="50" width="700" height="30" fill="#333" rx="5" />
+                            <circle cx="400" cy="200" r="60" fill="#4A90E2" />
+                            <rect x="300" y="300" width="200" height="30" fill="#66aaff" rx="5" />
+                            <text x="400" y="210" text-anchor="middle" fill="white" font-size="20" font-family="Arial">联机互动</text>
+                        </svg>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2>📥 下载 Busy With Fish</h2>
+            <p>选择适合您系统的版本进行下载</p>
+            <div class="platforms">
+                <div class="platform-card">
+                    <div class="platform-icon">🖥️</div>
+                    <h3>Windows</h3>
+                    <p>适用于 Windows 10/11</p>
+                    <a href="#" class="download-link" id="win-download">下载</a>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">🍎</div>
+                    <h3>macOS</h3>
+                    <p>适用于 macOS 10.14+</p>
+                    <a href="#" class="download-link" id="mac-download">下载</a>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>适用于主流发行版</p>
+                    <a href="#" class="download-link" id="linux-download">下载</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 捐赠区域 -->
+    <section id="donate" class="donate">
+        <div class="container">
+            <h2>💝 支持项目发展</h2>
+            <p>如果 Busy With Fish 帮助到了您，欢迎扫码捐赠支持项目持续发展</p>
+            <div class="donate-content">
+                <div class="donate-qr">
+                    <div class="qr-placeholder">
+                        <p>支付宝捐赠码</p>
+                        <div class="qr-image" id="alipay-qr">
+                            <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="180" height="180" fill="white" />
+                                <rect x="10" y="10" width="40" height="40" fill="black" />
+                                <rect x="130" y="10" width="40" height="40" fill="black" />
+                                <rect x="10" y="130" width="40" height="40" fill="black" />
+                                <rect x="60" y="60" width="20" height="20" fill="black" />
+                                <rect x="100" y="60" width="20" height="20" fill="black" />
+                                <rect x="60" y="100" width="20" height="20" fill="black" />
+                                <rect x="100" y="100" width="20" height="20" fill="black" />
+                                <rect x="30" y="60" width="10" height="10" fill="black" />
+                                <rect x="140" y="60" width="10" height="10" fill="black" />
+                                <rect x="60" y="30" width="10" height="10" fill="black" />
+                                <rect x="100" y="30" width="10" height="10" fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="qr-placeholder">
+                        <p>微信捐赠码</p>
+                        <div class="qr-image" id="wechat-qr">
+                            <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="180" height="180" fill="white" />
+                                <rect x="10" y="10" width="40" height="40" fill="black" />
+                                <rect x="130" y="10" width="40" height="40" fill="black" />
+                                <rect x="10" y="130" width="40" height="40" fill="black" />
+                                <rect x="60" y="60" width="20" height="20" fill="black" />
+                                <rect x="100" y="60" width="20" height="20" fill="black" />
+                                <rect x="60" y="100" width="20" height="20" fill="black" />
+                                <rect x="100" y="100" width="20" height="20" fill="black" />
+                                <rect x="30" y="100" width="10" height="10" fill="black" />
+                                <rect x="140" y="100" width="10" height="10" fill="black" />
+                                <rect x="60" y="30" width="10" height="10" fill="black" />
+                                <rect x="100" y="140" width="10" height="10" fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="donate-info">
+                    <h3>为什么支持我们？</h3>
+                    <ul>
+                        <li>帮助开发者持续维护和更新项目</li>
+                        <li>支持新功能的开发和完善</li>
+                        <li>让摸鱼神器变得越来越好用</li>
+                        <li>积少成多，功德无量</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Busy With Fish. All rights reserved. | Made with 🐟 for office workers</p>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">Twitter</a>
+                <a href="#">Discord</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
