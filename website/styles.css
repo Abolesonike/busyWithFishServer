@@ -100,9 +100,215 @@ body {
     opacity: 0.3;
 }
 
-.hero-content {
-    position: relative;
+.woodfish-img {
+    max-width: 300px;
+    height: auto;
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-fish-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.fish {
+    position: absolute;
+    opacity: 0.7;
+}
+
+.fish-1 {
+    top: 15%;
+    left: 10%;
+    animation: swim 15s linear infinite, float-y 3s ease-in-out infinite;
+}
+
+.fish-2 {
+    top: 25%;
+    left: 80%;
+    animation: swim 18s linear infinite, float-y 4s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.fish-3 {
+    top: 60%;
+    left: 5%;
+    animation: swim 20s linear infinite, float-y 3.5s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.fish-4 {
+    top: 70%;
+    left: 70%;
+    animation: swim 16s linear infinite, float-y 2.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.fish-5 {
+    top: 40%;
+    left: 50%;
+    animation: swim 22s linear infinite, float-y 3.8s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+.fish-6 {
+    top: 5%;
+    left: 15%;
+    animation: swim 18s linear infinite, float-y 3.2s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.fish-7 {
+    top: 80%;
+    left: 20%;
+    animation: swim 20s linear infinite, float-y 3.6s ease-in-out infinite;
+    animation-delay: 0.8s;
+}
+
+.fish-8 {
+    top: 20%;
+    left: 75%;
+    animation: swim 17s linear infinite, float-y 2.8s ease-in-out infinite;
+    animation-delay: 2.2s;
+}
+
+.fish-9 {
+    top: 65%;
+    left: 85%;
+    animation: swim 19s linear infinite, float-y 3.4s ease-in-out infinite;
+    animation-delay: 1.8s;
+}
+
+.fish-10 {
+    top: 45%;
+    left: 65%;
+    animation: swim 21s linear infinite, float-y 3.1s ease-in-out infinite;
+    animation-delay: 2.7s;
+}
+
+
+
+@keyframes swim {
+    0% {
+        transform: translateX(-100px) rotateY(0deg);
+    }
+    100% {
+        transform: translateX(100vw) rotateY(0deg);
+    }
+}
+
+
+@keyframes float-y {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.fish-text {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(74, 144, 226, 0.7);
+    opacity: 0.7;
     z-index: 1;
+    animation: swim 20s linear infinite, float-y 4s ease-in-out infinite;
+    user-select: none; /* 防止文字被选中 */
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.fish-text-1 {
+    top: 20%;
+    left: 30%;
+    font-size: 18px;
+    animation-delay: 0s;
+    color: rgba(123, 191, 176, 0.7);
+}
+
+.fish-text-2 {
+    top: 35%;
+    left: 80%;
+    font-size: 26px;
+    animation-delay: 1s;
+    color: rgba(245, 157, 129, 0.7);
+}
+
+.fish-text-3 {
+    top: 55%;
+    left: 60%;
+    font-size: 32px;
+    animation-delay: 1.5s;
+    color: rgba(144, 169, 198, 0.7);
+}
+
+.fish-text-4 {
+    top: 75%;
+    left: 20%;
+    font-size: 34px;
+    animation-delay: 2s;
+    color: rgba(193, 225, 193, 0.7);
+}
+
+.fish-text-5 {
+    top: 50%;
+    left: 10%;
+    font-size: 30px;
+    animation-delay: 2.5s;
+    color: rgba(255, 204, 128, 0.7);
+}
+
+.fish-text-6 {
+    top: 70%;
+    left: 40%;
+    font-size: 26px;
+    animation-delay: 3s;
+    color: rgba(220, 180, 220, 0.7);
+}
+
+.fish-text-7 {
+    top: 25%;
+    left: 60%;
+    font-size: 38px;
+    animation-delay: 2.5s;
+    color: rgba(255, 182, 193, 0.7);
+}
+
+.fish-text-8 {
+    top: 85%;
+    left: 80%;
+    font-size: 30px;
+    animation-delay: 1.5s;
+}
+
+.fish-text-9 {
+    top: 30%;
+    left: 20%;
+    font-size: 20px;
+    animation-delay: 1.5s;
+}
+
+    .hero-content {
+    position: relative;
+    z-index: 10;
     max-width: 800px;
     padding: 0 20px;
 }
