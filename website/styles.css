@@ -221,7 +221,13 @@ body {
     display: none;
     width: 100%;
     height: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .carousel-slide.active {
@@ -348,6 +354,13 @@ body {
 .download-link:hover {
     background: #357abd;
     transform: translateY(-2px);
+}
+
+.download-link.disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 /* 捐赠区域样式 */
