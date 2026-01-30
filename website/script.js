@@ -95,9 +95,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // 下载链接功能 - 这些可以由用户根据实际部署路径修改
 document.getElementById('win-download').addEventListener('click', function(e) {
     e.preventDefault();
-    // 预留 Windows 下载链接，用户可在此修改实际路径
-    alert('Windows 版本下载链接将在服务器部署后更新');
-    // window.location.href = 'YOUR_SERVER_PATH/busy-with-fish-windows.zip'; 
+    // 将 Windows 下载链接绑定到 download/busyWithFish.zip
+    window.location.href = 'download/busyWithFish.zip';
 });
 
 document.getElementById('mac-download').addEventListener('click', function(e) {
