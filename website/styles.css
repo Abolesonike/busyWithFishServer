@@ -768,3 +768,18 @@ body {
         right: 10px;
     }
 }
+
+/* GitHub按钮特殊样式 */
+.github-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.github-btn {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+}
